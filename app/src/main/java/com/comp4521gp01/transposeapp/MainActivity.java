@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
 
+import android.app.ListActivity;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,23 +18,42 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.ListView;
+import android.widget.Toast;
+import android.widget.ArrayAdapter;
 
 import com.github.clans.fab.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ListView listView;
+    private TextView debug;
+    private Toolbar toolbar;
+    private ArrayAdapter<String> listAdapter;
+    private String[] list = {"鉛筆","原子筆","鋼筆","毛筆","彩色筆"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+
+        debug = (TextView) findViewById(R.id.debug);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        listView = (ListView) findViewById(R.id.listview);
+        listAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, list);
+        listView.setAdapter(listAdapter);
+
         setSupportActionBar(toolbar);
         FloatingActionButton mFab_Cam = (FloatingActionButton) findViewById(R.id.camera_fab);
         FloatingActionButton mFab_Gal = (FloatingActionButton) findViewById(R.id.gallery_fab);
         mFab_Cam.setOnClickListener(clickListener);
         mFab_Gal.setOnClickListener(clickListener);
-        ImageButton img = (ImageButton) findViewById(R.id.imageButton);
+
+
 
     }
 
@@ -63,18 +84,10 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.camera_fab:
-                    Intent intent = new Intent(
-                            android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    File tmpFile = new File(
-                            Environment.getExternalStorageDirectory(), "image.jpg");
-                    outputFileUri = Uri.fromFile(tmpFile);
-                    intent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-                    startActivityForResult(intent, PICK_FROM_CAMERA);
+                    debug.setText("Camera");
                     break;
                 case R.id.gallery_fab:
-                    Intent i = new Intent(Intent.ACTION_PICK, null);
-                    i.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-                    startActivityForResult(i, PICK_FROM_GALLERY);
+                    debug.setText("Gallery");
                     break;
             }
         }
