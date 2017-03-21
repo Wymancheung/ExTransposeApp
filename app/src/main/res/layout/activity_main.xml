@@ -63,8 +63,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/fab_add"
-            app:menu_colorNormal="@color/app_primary"
-            app:menu_colorPressed="@color/app_primary_dark"
+            app:fab_colorNormal="@color/app_primary"
+            app:fab_colorPressed="@color/app_primary_dark"
             app:fab_size="mini"
             app:fab_label="@string/camera_fab"
             app:srcCompat="@android:drawable/ic_menu_camera"/>
@@ -74,8 +74,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/fab_add"
-            app:menu_colorNormal="@color/app_primary"
-            app:menu_colorPressed="@color/app_primary_dark"
+            app:fab_colorNormal="@color/app_primary"
+            app:fab_colorPressed="@color/app_primary_dark"
             app:fab_size="mini"
             app:fab_label="@string/gallery_fab"
             app:srcCompat="@android:drawable/ic_menu_gallery"/>

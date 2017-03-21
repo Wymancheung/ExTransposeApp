@@ -28,4 +28,7 @@ dependencies {
     compile 'com.android.support:design:25.2.0'
     compile 'com.github.clans:fab:1.6.4'
     testCompile 'junit:junit:4.12'
+
+    //Add Library
+    compile 'com.google.android.gms:play-services-vision:9.8.0'
 }
